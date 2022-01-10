@@ -2,7 +2,7 @@
 import json
 import flask
 import os
-from flask import jsonify
+from flask import jsonify, render_template
 from io import StringIO
 import flask_cors
 
@@ -16,7 +16,7 @@ LOG_FILE = os.path.join(PATH, 'logs')
 
 @app.route('/')
 def index():
-    return "Server is up!\nlogs will be stored in %s" % LOG_FILE
+    return render_template('index.html')
 
 
 @app.route('/api/logs')
@@ -37,10 +37,7 @@ def logger():
     buffer.write('\n')
     with open(LOG_FILE, 'a') as f:
         f.write(buffer.getvalue())
-    return """
-    <h1> Welcome To API Logger </h1>
-    <h3> Logs can be found in <a href="https://logging-service-py.herokuapp.com/api/logs">here</a>.</h3>
-    """
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
