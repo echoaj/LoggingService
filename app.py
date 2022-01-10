@@ -7,7 +7,7 @@ from io import StringIO
 import flask_cors
 
 app = flask.Flask(__name__)
-flask_cors.CORS(app, resources={r'/api/*': {"origins": "https://finance-tracker-js.herokuapp.com/"}})
+flask_cors.CORS(app, resources={r'/api/*': {"origins": "*"}})
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 PATH = os.path.dirname(os.path.abspath(__file__))
