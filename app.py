@@ -37,7 +37,10 @@ def logger():
     buffer.write('\n')
     with open(LOG_FILE, 'a') as f:
         f.write(buffer.getvalue())
-    return result
+    return """
+    <h1> Welcome To API Logger </h1>
+    <h3> Logs can be found in <a href="https://logging-service-py.herokuapp.com/api/logs">here</a>.</h3>
+    """
 
 
 if __name__ == '__main__':
