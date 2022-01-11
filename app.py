@@ -2,9 +2,10 @@
 import json
 import flask
 import os
-from flask import jsonify, render_template
+from flask import jsonify, render_template, url_for
 from io import StringIO
 import flask_cors
+
 
 app = flask.Flask(__name__)
 flask_cors.CORS(app, resources={r'/api/*': {"origins": "*"}})
@@ -27,6 +28,32 @@ def read_logs():
             for line in f.readlines():
                 logs.append(json.loads(line))
     return jsonify(logs)
+
+
+@app.route('/api/logs/pretty')
+def read_logs_pretty():
+    logs = []
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE) as f:
+            for line in f.readlines():
+                logs.append(json.loads(line))
+    return render_template("pretty_logs.html", logs=logs)
+
+
+@app.route('/api/logs/clear')
+def clear_logs():
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "w") as f:
+            f.write('{"Welcome To": "Logger Service"}\n')
+    return flask.redirect(url_for('read_logs'))
+
+
+@app.route('/api/logs/pretty/clear')
+def clear_pretty_logs():
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "w") as f:
+            f.write('{"Welcome To": "Logger Service"}\n')
+    return flask.redirect(url_for('read_logs_pretty'))
 
 
 @app.route('/api/logger', methods=['GET', 'POST'])
