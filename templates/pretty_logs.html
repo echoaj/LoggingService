@@ -14,7 +14,13 @@
         <table style="margin: 0px;">
         {% for key, value in log.items() %}
             <tr style="margin: 0px;">
-                <td style="color: #C5CB00;">{{ key }}:&emsp;</td>
+                {% if "MOBILE" in key %}
+                    <td style="color: #05CB00;">{{ key }}:&emsp;</td>   <!-- GREEN -->
+                {% elif "TABLET" in key %}
+                    <td style="color: #F02B00;">{{ key }}:&emsp;</td>   <!-- RED -->
+                {% else %}
+                    <td style="color: #C5CB00;">{{ key }}:&emsp;</td>   <!-- YELLOW -->
+                {% endif %}
                 <td style="color: #9FD7F7;">{{ value }}</td>
             </tr>
         {% endfor %}
