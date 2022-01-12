@@ -5,15 +5,52 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Anton&family=Bebas+Neue&family=DM+Sans&family=Francois+One&family=Heebo:wght@300&family=Hind+Siliguri:wght@500&family=Inconsolata:wght@500&family=Lexend+Deca:wght@500&family=Noto+Sans&family=Open+Sans:wght@300&family=Orbitron&family=Saira:wght@100&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <title>Logger Service</title>
 </head>
 
 <body>
 
-  <h1> Welcome To API Logger </h1>
-  <h3> Logs can be found at <a href="https://logging-service-py.herokuapp.com/api/logs">here</a>.</h3>
-  <h3> Pretty Logs can be found at <a href="https://logging-service-py.herokuapp.com/api/logs/pretty">here</a>.</h3>
+  <style>
+
+    body {
+      animation-name: backgroundColorPalette;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+    * {
+      font-family: 'DM Sans'
+    }
+    body h1, h3 {
+      margin-left: 100px;
+    }
+
+    @keyframes backgroundColorPalette {
+      0% {
+        background: #60d394;
+      }
+      25% {
+        background: #aaf683;
+      }
+      50% {
+        background: #ffd97d;
+      }
+      75% {
+        background: #ff9b85;
+      }
+      100% {
+        background: #ee6055;
+      }
+    }
+  </style>
+
+  <h1> Welcome To Logger Service </h1>
+  <h3> Logs can be found <a href="https://logging-service-py.herokuapp.com/api/logs">here</a>.</h3>
+  <h3> Pretty Logs can be found <a href="https://logging-service-py.herokuapp.com/api/logs/pretty">here</a>.</h3>
 
 </body>
 
